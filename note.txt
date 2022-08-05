@@ -1,0 +1,7 @@
+composer dump-autoload
+composer update
+
+composer require --dev phpunit/phpunit
+
+composer require --dev orchestra/testbench
+composer require --dev "orchestra/testbench=^4.0"
