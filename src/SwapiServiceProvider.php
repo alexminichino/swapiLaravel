@@ -17,16 +17,19 @@ class SwapiServiceProvider extends ServiceProvider {
           InstallPackage::class,
       ]);
 
-      if (! class_exists('CreatePeopleTable')) {
+      if (count(glob( database_path('migrations/' . "*_create_planets_table.php"))) == 0) {
         $this->publishes([
-          __DIR__ . '/../database/migrations/create_planets_table.php' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_planets_table.php'),
-          __DIR__ . '/../database/migrations/create_people_table.php' => database_path('migrations/' . date('Y_m_d_His', time()+1) . '_create_people_table.php'),
-         // __DIR__ . '/../database/migrations/create_people_planet_table.php' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_people_planet_table.php'),
-         
+          __DIR__ . '/../database/migrations/create_planets_table.php' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_planets_table.php')
         ], 'migrations');
       }
 
-      if (! class_exists('PeopleAndPlanetTableSeeder')) {
+      if (count(glob( database_path('migrations/' . "*_create_people_table.php"))) == 0) {
+        $this->publishes([
+          __DIR__ . '/../database/migrations/create_people_table.php' => database_path('migrations/' . date('Y_m_d_His', time()+1) . '_create_people_table.php')         
+        ], 'migrations');
+      }
+      
+      if (! file_exists(database_path('seeds/PeopleAndPlanetTableSeeder.php'))) {
         $this->publishes([
           __DIR__ . '/../database/seeds/PeopleAndPlanetTableSeeder.php' => database_path('seeds/PeopleAndPlanetTableSeeder.php'),         
         ], 'migrations');

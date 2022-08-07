@@ -1,5 +1,5 @@
 <?php
-
+namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use AlexMinichino\Swapi\Models\People;
 use AlexMinichino\Swapi\Models\Planet;
