@@ -42,3 +42,6 @@ A questo punto il setup è terminato e non ci resta che utilizzare le seguenti A
     /planet
     /planet/{id}
 
+## Progetto di esempio
+
+Per testare il package è possibile utilizzare il seguente [progetto di esempio](https://github.com/alexminichino/swapiLaravel-SampleProject)
